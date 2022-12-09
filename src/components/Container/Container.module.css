@@ -1,4 +1,15 @@
 .container {
-    max-width: 800px;
     margin: auto;
+    background: url('../../img/movie-cover.jpg') center/cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    padding: 3rem 6rem;
+}
+
+.container h1 {
+    color: #fff;
+    font-weight: 600;
+    margin-left: 3.2rem;
 }

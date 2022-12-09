@@ -31,7 +31,8 @@ function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
    } else {
       card = (
          <Card
-            style={{ width: '100%', maxWidth: 300, margin: '10px auto' }}
+            hoverable
+            style={{ width: 340 }}
             cover={
                movie.Poster !== 'N/A' && <img alt='movie' src={movie.Poster} />
             }
@@ -65,8 +66,7 @@ function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
          </Card>
       );
    }
-   return <><li>{card}
-   </li></>;
+   return <>{card}</>;
 }
 export default MovieCard;
 

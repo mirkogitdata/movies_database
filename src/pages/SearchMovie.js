@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { message, Button, Input, Divider } from 'antd';
+import { message, Divider } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { EyeOutlined, LoadingOutlined } from '@ant-design/icons';
 import api from '../api';
+import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
 import FavoriteList from './FavoriteList';
 import Container from '../components/Container/Container';
+import FavoriteBtn from '../components/Button/FavoriteBtn';
 
 function SearchMovie(props) {
-   const [input, setInput] = useState('');
    const [loading, setLoading] = useState(false);
    const [movie, setMovie] = useState(null);
    const [favorite, setFavorite] = useState([]);
    const [modalShow, setModalShow] = useState(false);
-   const [searchInputTimeout, setSearchAInputTimeout] = useState(0);
 
    useEffect(() => {
       const data = localStorage.getItem('my-favoriteList');
@@ -51,24 +51,6 @@ function SearchMovie(props) {
       setLoading(false);
    };
 
-   const changeHandler = (event) => {
-      setInput(event.target.value);
-   }
-
-   const submitHandler = (event) => {
-      event.preventDefault();
-      setLoading(true);
-      if (searchInputTimeout) {
-         clearTimeout(searchInputTimeout);
-      }
-      setSearchAInputTimeout(
-         setTimeout(() => {
-            fetchMovie(input);
-            setLoading(false);
-         }, 1500)
-      );
-   }
-
 
    const addToFavoriteList = (movie) => {
       if (!favorite.find((m) => m.Title === movie.Title)) {
@@ -87,10 +69,10 @@ function SearchMovie(props) {
    return (
       <>
          <Container>
-            <Button onClick={() => setModalShow(true)}>
-               <EyeOutlined />
-               Favorite Movies {favorite.length}
-            </Button>
+            <FavoriteBtn
+               modalShow={modalShow}
+               setModalShow={setModalShow}
+               favorite={favorite} />
             <FavoriteList
                modalShow={modalShow}
                setModalShow={setModalShow}
@@ -98,16 +80,9 @@ function SearchMovie(props) {
                setFavorite={setFavorite}
                removeFromFavoriteList={removeFromFavoriteList}
             />
-            <Divider>Search a movie by name</Divider>
-            <form onSubmit={submitHandler}>
-               <Input
-                  type='search'
-                  placeholder='search by movie title'
-                  onChange={changeHandler}
-               />
-               <button>Search</button>
-            </form>
-
+            <Divider />
+            <h1>Movie Database</h1>
+            <SearchForm onFetchmovie={fetchMovie} />
             <Divider />
             {!loading ? (
                movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
