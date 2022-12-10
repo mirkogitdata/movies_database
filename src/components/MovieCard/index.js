@@ -10,22 +10,22 @@ function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
    if (removeFromFavoriteList) {
       card = (
          <Card
-            style={{ width: '100%', margin: '10px auto', border: '1px solid #00e36a' }}
+            style={{ width: '100%', margin: '10px auto', background: 'rgba(51, 56, 61, 1)' }}
             actions={[
-               <DeleteOutlined
+               <DeleteOutlined style={{ fontSize: '1.3rem' }}
+
                   onClick={() => removeFromFavoriteList(movie.Title)}
                />
             ]}
          >
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-               <img alt="ups" style={{ width: '150px', height: '150px' }} src={movie.Poster} />
-               <br />
-               <Meta title={movie.Title} />
-               <br />
-               <Meta title={movie.Year} />
-               <br />
-               <Meta title={movie.Country} />
-            </div>
+            <ul className={classes.dropDetails} >
+               <img alt="ups" src={movie.Poster} />
+               <li>
+                  <p>{movie.Title}</p>
+                  <p>year: {movie.Year}</p>
+                  <p>country: {movie.Country}</p>
+               </li>
+            </ul>
          </Card>
       );
    } else {
@@ -77,5 +77,5 @@ MovieCard.propTypes = {
       Poster: PropTypes.string.isRequired
    }).isRequired,
    addToFavoriteList: PropTypes.func,
-   removeFromFavoriteList: PropTypes.func,
+   removeFromFavoriteList: PropTypes.func
 };

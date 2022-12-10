@@ -24,6 +24,7 @@ const SearchForm = (props) => {
                 props.setLoading(false);
             }, 1500)
         );
+        event.target.reset();
     }
     return (
         <form className={classes.form} onSubmit={submitHandler}>

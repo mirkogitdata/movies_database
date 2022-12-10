@@ -6,12 +6,13 @@ import classes from '../MovieList/MovieList.module.css';
 const MovieList = (props) => {
     return (
         <ul className={classes['movies-list']}>
-            {props.movie.map((movie) => (
+            {props.movie.map((movies) => (
                 <DetailsMovie
-                    key={movie.imdbID}
-                    title={movie.Title}
-                    year={movie.Year}
-                    poster={movie.Poster}
+                    key={movies.imdbID}
+                    title={movies.Title}
+                    year={movies.Year}
+                    country={movies.Country}
+                    poster={movies.Poster}
                 />
             ))}
         </ul>

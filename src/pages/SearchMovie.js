@@ -26,8 +26,6 @@ function SearchMovie(props) {
       localStorage.setItem('my-favoriteList', JSON.stringify(favorite));
    });
 
-
-
    const fetchMovie = async (title) => {
       await fetch(`${api.URL}/?t=${title}&apikey=${api.KEY}`)
          .then((res) => res.json())
@@ -40,6 +38,7 @@ function SearchMovie(props) {
                   Title: response.Title,
                   Year: response.Year,
                   Rated: response.Rated,
+                  Genre: response.Genre,
                   Country: response.Country,
                   Poster: response.Poster,
                   like: false,
@@ -98,7 +97,6 @@ function SearchMovie(props) {
             )}
             {loading && <p>Loading...</p>}
          </Container>
-
       </>
 
 
