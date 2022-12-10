@@ -10,7 +10,7 @@ function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
    if (removeFromFavoriteList) {
       card = (
          <Card
-            style={{ width: '100%', margin: '10px auto' }}
+            style={{ width: '100%', margin: '10px auto', border: '1px solid #00e36a' }}
             actions={[
                <DeleteOutlined
                   onClick={() => removeFromFavoriteList(movie.Title)}
@@ -43,17 +43,14 @@ function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
                      <StarFilled
                         className='star'
                         style={{ color: 'yellow', fontSize: '25px' }}
-                        key='addWishlist'
                         onClick={() => addToFavoriteList(movie)}
                      />
                      <StarFilled
                         style={{ color: 'yellow', fontSize: '25px' }}
-                        key='addWishlist'
                         onClick={() => addToFavoriteList(movie)}
                      />
                      <StarFilled
                         style={{ color: 'yellow', fontSize: '25px' }}
-                        key='addWishlist'
                         onClick={() => addToFavoriteList(movie)}
                      />
                   </span>
@@ -77,10 +74,8 @@ MovieCard.propTypes = {
       Year: PropTypes.string.isRequired,
       Rated: PropTypes.string.isRequired,
       Country: PropTypes.string.isRequired,
-      Poster: PropTypes.string.isRequired,
-      like: PropTypes.bool.isRequired,
+      Poster: PropTypes.string.isRequired
    }).isRequired,
    addToFavoriteList: PropTypes.func,
    removeFromFavoriteList: PropTypes.func,
-   toggleLike: PropTypes.func,
 };

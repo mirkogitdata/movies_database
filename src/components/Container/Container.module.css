@@ -1,5 +1,7 @@
 .container {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: url('../../img/movie-cover.jpg') center/cover;
     background-repeat: no-repeat;
     width: 100vw;

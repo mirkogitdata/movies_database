@@ -31,8 +31,7 @@ function FavoriteList({
    setFavorite,
    modalShow,
    setModalShow,
-   removeFromFavoriteList,
-   toggleLike,
+   removeFromFavoriteList
 }) {
    const onDragEnd = (result) => {
       if (!result.destination) {
@@ -82,7 +81,7 @@ function FavoriteList({
                                  <MovieCard
                                     movie={movie}
                                     removeFromFavoriteList={removeFromFavoriteList}
-                                    toggleLike={toggleLike}
+
                                  />
                               </div>
                            )}
@@ -107,11 +106,9 @@ FavoriteList.propTypes = {
          Rated: PropTypes.string.isRequired,
          Country: PropTypes.string.isRequired,
          Poster: PropTypes.string.isRequired,
-         like: PropTypes.bool.isRequired,
       })
    ).isRequired,
    setModalShow: PropTypes.func.isRequired,
    setFavorite: PropTypes.func.isRequired,
-   removeFromFavoriteList: PropTypes.func.isRequired,
-   toggleLike: PropTypes.func.isRequired,
+   removeFromFavoriteList: PropTypes.func.isRequired
 };

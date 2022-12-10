@@ -80,10 +80,17 @@ function SearchMovie(props) {
                setFavorite={setFavorite}
                removeFromFavoriteList={removeFromFavoriteList}
             />
-            <Divider />
+            <Divider
+               style={{ border: 'none' }}
+            />
+            <Divider
+               style={{ border: 'none' }}
+            />
             <h1>Movie Database</h1>
             <SearchForm onFetchmovie={fetchMovie} />
-            <Divider />
+            <Divider
+               style={{ border: 'none' }}
+            />
             {!loading ? (
                movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
             ) : (
