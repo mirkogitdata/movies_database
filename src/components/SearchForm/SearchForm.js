@@ -6,7 +6,6 @@ import classes from '../SearchForm/SearchForm.module.css';
 const SearchForm = (props) => {
 
     const [input, setInput] = useState('');
-    const [loading, setLoading] = useState(false);
     const [searchInputTimeout, setSearchAInputTimeout] = useState(0);
 
     const changeHandler = (event) => {
@@ -15,14 +14,14 @@ const SearchForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        setLoading(true);
+        props.setLoading(true);
         if (searchInputTimeout) {
             clearTimeout(searchInputTimeout);
         }
         setSearchAInputTimeout(
             setTimeout(() => {
                 props.onFetchmovie(input);
-                setLoading(false);
+                props.setLoading(false);
             }, 1500)
         );
     }
@@ -37,7 +36,7 @@ const SearchForm = (props) => {
                 onChange={changeHandler}
             />
             <button>Search</button>
-            {loading}
+            {props.loading}
         </form>
     );
 };

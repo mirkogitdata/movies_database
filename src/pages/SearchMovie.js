@@ -87,14 +87,14 @@ function SearchMovie(props) {
                style={{ border: 'none' }}
             />
             <h1>Movie Database</h1>
-            <SearchForm onFetchmovie={fetchMovie} />
+            <SearchForm onFetchmovie={fetchMovie} loading={loading} setLoading={setLoading} />
             <Divider
                style={{ border: 'none' }}
             />
             {!loading ? (
                movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
             ) : (
-               <LoadingOutlined style={{ fontSize: '36px' }} />
+               <LoadingOutlined style={{ fontSize: '36px', color: 'white' }} />
             )}
             {loading && <p>Loading...</p>}
          </Container>
