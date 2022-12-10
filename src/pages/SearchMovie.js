@@ -38,7 +38,6 @@ function SearchMovie(props) {
                   Title: response.Title,
                   Year: response.Year,
                   Rated: response.Rated,
-                  Genre: response.Genre,
                   Country: response.Country,
                   Poster: response.Poster,
                   like: false,
@@ -88,7 +87,7 @@ function SearchMovie(props) {
             <h1>Movie Database</h1>
             <SearchForm onFetchmovie={fetchMovie} loading={loading} setLoading={setLoading} />
             <Divider
-               style={{ border: 'none' }}
+               style={{ border: 'none', marginTop: '4rem' }}
             />
             {!loading ? (
                movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
