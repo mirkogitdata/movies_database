@@ -1,10 +1,18 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
-import { StarFilled, DeleteOutlined } from '@ant-design/icons';
+import { StarFilled, StarOutlined, DeleteOutlined } from '@ant-design/icons';
 import classes from '../MovieCard/styles.module.css';
 
 function MovieCard(props) {
+
+   const [click, setClick] = useState(false);
+
+   const clickedStar = () => {
+      setClick(true)
+      props.addToFavoriteList(props.movie)
+   }
+
    let card = '';
 
    props.removeFromFavoriteList ? card = (
@@ -37,19 +45,15 @@ function MovieCard(props) {
          <ul className={classes.details}>
             <h2>{props.movie.Title}
                <span>
-                  <StarFilled
-                     className='star'
-                     style={{ color: 'yellow', fontSize: '25px' }}
-                     onClick={() => props.addToFavoriteList(props.movie)}
-                  />
-                  <StarFilled
-                     style={{ color: 'yellow', fontSize: '25px' }}
-                     onClick={() => props.addToFavoriteList(props.movie)}
-                  />
-                  <StarFilled
-                     style={{ color: 'yellow', fontSize: '25px' }}
-                     onClick={() => props.addToFavoriteList(props.movie)}
-                  />
+                  {
+                     !click ? (<StarOutlined
+                        style={{ color: '#00e36a', fontSize: '29px' }}
+                        onClick={clickedStar}
+                     />) : (<StarFilled
+                        style={{ color: '#00e36a', fontSize: '29px' }}
+                     />)
+                  }
+
                </span>
             </h2>
 
