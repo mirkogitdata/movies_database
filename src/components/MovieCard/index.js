@@ -4,7 +4,6 @@ import { Card } from 'antd';
 import { StarFilled, DeleteOutlined } from '@ant-design/icons';
 import classes from '../MovieCard/styles.module.css';
 
-const { Meta } = Card;
 function MovieCard({ movie, addToFavoriteList, removeFromFavoriteList }) {
    let card = '';
    if (removeFromFavoriteList) {
