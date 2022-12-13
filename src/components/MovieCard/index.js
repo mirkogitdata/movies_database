@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { Card } from 'antd';
 import { StarFilled, StarOutlined, DeleteOutlined } from '@ant-design/icons';
 import classes from '../MovieCard/styles.module.css';
@@ -17,7 +18,7 @@ function MovieCard(props) {
 
    props.removeFromFavoriteList ? card = (
       <Card
-         style={{ width: '100%', margin: '10px auto', background: 'rgba(51, 56, 61, 1)' }}
+         style={{ width: '100%', background: 'rgba(51, 56, 61, 1)' }}
          actions={[
             <DeleteOutlined style={{ fontSize: '1.3rem' }}
 

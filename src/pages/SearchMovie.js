@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { message, Divider } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-
+import AuthContext from '../context/auth-context';
 import api from '../api';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
@@ -66,32 +66,37 @@ function SearchMovie(props) {
 
    return (
       <>
-         <Container>
-            <Divider
-               style={{ border: 'none', marginTop: '2rem' }}
-            />
-            <FavoriteBtn
-               modalShow={modalShow}
-               setModalShow={setModalShow}
-               favorite={favorite} />
-            <FavoriteList
-               modalShow={modalShow}
-               setModalShow={setModalShow}
-               favorite={favorite}
-               setFavorite={setFavorite}
-               removeFromFavoriteList={removeFromFavoriteList}
-            />
-            <Divider
-               style={{ border: 'none', marginTop: '5rem' }}
-            />
-            <SearchForm onFetchmovie={fetchMovie} loading={loading} setLoading={setLoading} />
-            {!loading ? (
-               movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
-            ) : (
-               <LoadingOutlined style={{ fontSize: '36px', color: 'white' }} />
-            )}
-            {loading && <p>Loading...</p>}
-         </Container>
+         <AuthContext.Provider value={{
+            movie: movie,
+            addToFavoriteList: addToFavoriteList,
+            modalShow: modalShow,
+            setModalShow: setModalShow,
+            favorite: favorite,
+            setFavorite: setFavorite,
+            removeFromFavoriteList: removeFromFavoriteList,
+            loading: loading,
+            setLoading: setLoading,
+            onFetchmovie: fetchMovie,
+
+         }}>
+            <Container>
+               <Divider
+                  style={{ border: 'none', marginTop: '2rem' }}
+               />
+               <FavoriteBtn />
+               <FavoriteList />
+               <Divider
+                  style={{ border: 'none', marginTop: '5rem' }}
+               />
+               <SearchForm />
+               {!loading ? (
+                  movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
+               ) : (
+                  <LoadingOutlined style={{ fontSize: '36px', color: 'white' }} />
+               )}
+               {loading && <p>Loading...</p>}
+            </Container>
+         </AuthContext.Provider>
       </>
 
 

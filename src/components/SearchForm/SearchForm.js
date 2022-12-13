@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "../../context/auth-context";
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
 
-const SearchForm = (props) => {
+const SearchForm = () => {
+
+    const context = useContext(AuthContext);
 
     const [input, setInput] = useState('');
     const [searchInputTimeout, setSearchAInputTimeout] = useState(0);
@@ -14,14 +17,14 @@ const SearchForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        props.setLoading(true);
+        context.setLoading(true);
         if (searchInputTimeout) {
             clearTimeout(searchInputTimeout);
         }
         setSearchAInputTimeout(
             setTimeout(() => {
-                props.onFetchmovie(input);
-                props.setLoading(false);
+                context.onFetchmovie(input);
+                context.setLoading(false);
             }, 1500)
         );
         event.target.reset();
@@ -41,7 +44,7 @@ const SearchForm = (props) => {
                 style={{ border: 'none', marginTop: '1rem' }}
             />
             <button>Search</button>
-            {props.loading}
+            {context.loading}
         </form>
     );
 };

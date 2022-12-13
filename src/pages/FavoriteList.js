@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Modal } from 'antd';
+import AuthContext from '../context/auth-context';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import MovieCard from '../components/MovieCard';
@@ -26,32 +27,29 @@ const getListStyle = (isDraggingOver) => ({
    width: '100%',
 });
 
-function FavoriteList({
-   favorite,
-   setFavorite,
-   modalShow,
-   setModalShow,
-   removeFromFavoriteList
-}) {
+function FavoriteList() {
+
+   const context = useContext(AuthContext);
+
    const onDragEnd = (result) => {
       if (!result.destination) {
          return;
       }
       const newFavoriteList = reorder(
-         favorite,
+         context.favorite,
          result.source.index,
          result.destination.index
       );
 
-      setFavorite(newFavoriteList);
+      context.setFavorite(newFavoriteList);
    };
    return (
       <Modal
          title='Movies List'
-         open={modalShow}
+         open={context.modalShow}
          footer={null}
-         onOk={() => setModalShow(false)}
-         onCancel={() => setModalShow(false)}
+         onOk={() => context.setModalShow(false)}
+         onCancel={() => context.setModalShow(false)}
       >
          <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId='droppable'>
@@ -61,7 +59,7 @@ function FavoriteList({
                      ref={provided.innerRef}
                      style={getListStyle(snapshot.isDraggingOver)}
                   >
-                     {favorite.map((movie, index) => (
+                     {context.favorite.map((movie, index) => (
                         <Draggable
                            key={movie.imdbID}
                            draggableId={movie.imdbID}
@@ -80,7 +78,7 @@ function FavoriteList({
                               >
                                  <MovieCard
                                     movie={movie}
-                                    removeFromFavoriteList={removeFromFavoriteList}
+                                    removeFromFavoriteList={context.removeFromFavoriteList}
 
                                  />
                               </div>
