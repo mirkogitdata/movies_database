@@ -37,7 +37,7 @@ function MovieCard(props) {
    ) : card = (
       <Card
          hoverable
-         style={{ width: 340 }}
+         style={{ width: 200, border: '2px solid #00e36a' }}
          cover={
             props.movie.Poster !== 'N/A' && <img alt='movie' src={props.movie.Poster} />
          }
@@ -47,10 +47,10 @@ function MovieCard(props) {
                <span>
                   {
                      !click ? (<StarOutlined
-                        style={{ color: '#00e36a', fontSize: '29px' }}
+                        style={{ color: '#00e36a', fontSize: '24px' }}
                         onClick={clickedStar}
                      />) : (<StarFilled
-                        style={{ color: '#00e36a', fontSize: '29px' }}
+                        style={{ color: '#00e36a', fontSize: '24px' }}
                      />)
                   }
 

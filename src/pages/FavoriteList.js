@@ -48,7 +48,7 @@ function FavoriteList({
    return (
       <Modal
          title='Movies List'
-         visible={modalShow}
+         open={modalShow}
          footer={null}
          onOk={() => setModalShow(false)}
          onCancel={() => setModalShow(false)}

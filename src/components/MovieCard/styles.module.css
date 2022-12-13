@@ -34,10 +34,10 @@
 .dropDetails li {
     display: flex;
     flex-direction: column;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
 }
 
 .dropDetails li p {
-    font-size: 1.1em;
+    font-size: 0.9em;
     font-weight: 600;
 }

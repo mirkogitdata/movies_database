@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SearchOutlined } from '@ant-design/icons';
-//import { Input } from 'antd';
+import { Divider } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
 
 const SearchForm = (props) => {
@@ -28,13 +28,17 @@ const SearchForm = (props) => {
     }
     return (
         <form className={classes.form} onSubmit={submitHandler}>
+            <h1>Movie Database</h1>
             <SearchOutlined
-                style={{ fontSize: '2rem', color: 'white', marginRight: '1.2rem' }}
+                style={{ fontSize: '2rem', color: 'white', display: 'none' }}
             />
             <input
                 type='search'
                 placeholder='Enter movie title'
                 onChange={changeHandler}
+            />
+            <Divider
+                style={{ border: 'none', marginTop: '1rem' }}
             />
             <button>Search</button>
             {props.loading}

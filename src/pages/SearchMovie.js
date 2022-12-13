@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { message, Divider } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+
 import api from '../api';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
@@ -67,6 +67,9 @@ function SearchMovie(props) {
    return (
       <>
          <Container>
+            <Divider
+               style={{ border: 'none', marginTop: '2rem' }}
+            />
             <FavoriteBtn
                modalShow={modalShow}
                setModalShow={setModalShow}
@@ -79,16 +82,9 @@ function SearchMovie(props) {
                removeFromFavoriteList={removeFromFavoriteList}
             />
             <Divider
-               style={{ border: 'none' }}
+               style={{ border: 'none', marginTop: '5rem' }}
             />
-            <Divider
-               style={{ border: 'none' }}
-            />
-            <h1>Movie Database</h1>
             <SearchForm onFetchmovie={fetchMovie} loading={loading} setLoading={setLoading} />
-            <Divider
-               style={{ border: 'none', marginTop: '4rem' }}
-            />
             {!loading ? (
                movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
             ) : (
