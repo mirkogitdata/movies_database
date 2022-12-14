@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import AuthContext from '../context/auth-context';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
-import MovieCard from '../components/MovieCard';
+import FavoriteCard from '../components/FavoriteCard/FavoriteCard';
 
 const reorder = (list, startIndex, endIndex) => {
    const result = Array.from(list);
@@ -76,7 +76,7 @@ function FavoriteList() {
                                     provided.draggableProps.style
                                  )}
                               >
-                                 <MovieCard
+                                 <FavoriteCard
                                     movie={movie}
                                     removeFromFavoriteList={context.removeFromFavoriteList}
 

@@ -40,7 +40,7 @@ function SearchMovie(props) {
                   Rated: response.Rated,
                   Country: response.Country,
                   Poster: response.Poster,
-                  like: false,
+                  Genre: response.Genre
                };
                setMovie(movie);
             }
@@ -76,8 +76,7 @@ function SearchMovie(props) {
             removeFromFavoriteList: removeFromFavoriteList,
             loading: loading,
             setLoading: setLoading,
-            onFetchmovie: fetchMovie,
-
+            onFetchmovie: fetchMovie
          }}>
             <Container>
                <Divider
@@ -89,12 +88,13 @@ function SearchMovie(props) {
                   style={{ border: 'none', marginTop: '5rem' }}
                />
                <SearchForm />
+               {loading && <p>Loading...</p>}
                {!loading ? (
-                  movie && <MovieCard movie={movie} addToFavoriteList={addToFavoriteList} />
+                  movie && <MovieCard />
                ) : (
                   <LoadingOutlined style={{ fontSize: '36px', color: 'white' }} />
                )}
-               {loading && <p>Loading...</p>}
+
             </Container>
          </AuthContext.Provider>
       </>

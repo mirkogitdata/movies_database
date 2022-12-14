@@ -1,50 +1,31 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../context/auth-context';
 import { Card } from 'antd';
-import { StarFilled, StarOutlined, DeleteOutlined } from '@ant-design/icons';
+import { StarFilled, StarOutlined } from '@ant-design/icons';
 import classes from '../MovieCard/styles.module.css';
 
-function MovieCard(props) {
+function MovieCard() {
 
    const [click, setClick] = useState(false);
 
+   const context = useContext(AuthContext);
+
    const clickedStar = () => {
       setClick(true)
-      props.addToFavoriteList(props.movie)
+      context.addToFavoriteList(context.movie)
    }
 
-   let card = '';
 
-   props.removeFromFavoriteList ? card = (
-      <Card
-         style={{ width: '100%', background: 'rgba(51, 56, 61, 1)' }}
-         actions={[
-            <DeleteOutlined style={{ fontSize: '1.3rem' }}
-
-               onClick={() => props.removeFromFavoriteList(props.movie.Title)}
-            />
-         ]}
-      >
-         <ul className={classes.dropDetails} >
-            <img alt="ups" src={props.movie.Poster} />
-            <li>
-               <p>{props.movie.Title}</p>
-               <p>year: {props.movie.Year}</p>
-               <p>country: {props.movie.Country}</p>
-            </li>
-         </ul>
-      </Card>
-   ) : card = (
+   const card = context.addToFavoriteList && (
       <Card
          hoverable
          style={{ width: 200, border: '2px solid #00e36a' }}
          cover={
-            props.movie.Poster !== 'N/A' && <img alt='movie' src={props.movie.Poster} />
+            context.movie.Poster !== 'N/A' && <img alt='movie' src={context.movie.Poster} />
          }
       >
          <ul className={classes.details}>
-            <h2>{props.movie.Title}
+            <h2>{context.movie.Title}
                <span>
                   {
                      !click ? (<StarOutlined
@@ -58,9 +39,10 @@ function MovieCard(props) {
                </span>
             </h2>
 
-            <li>Year:  {props.movie.Year}</li>
-            <li>Rated: {props.movie.Rated}</li>
-            <li>Country:  {props.movie.Country}</li>
+            <li>Year:  {context.movie.Year}</li>
+            <li>Genre:  {context.movie.Genre}</li>
+            <li>Country:  {context.movie.Country}</li>
+            <li>Rated:  {context.movie.Rated}</li>
          </ul>
       </Card>
    )
@@ -68,15 +50,3 @@ function MovieCard(props) {
 }
 export default MovieCard;
 
-MovieCard.propTypes = {
-   movie: PropTypes.shape({
-      imdbID: PropTypes.string.isRequired,
-      Title: PropTypes.string.isRequired,
-      Year: PropTypes.string.isRequired,
-      Rated: PropTypes.string.isRequired,
-      Country: PropTypes.string.isRequired,
-      Poster: PropTypes.string.isRequired
-   }).isRequired,
-   addToFavoriteList: PropTypes.func,
-   removeFromFavoriteList: PropTypes.func
-};

@@ -12,32 +12,3 @@
 .details li {
     margin: 10px 0px;
 }
-
-.dropDetails {
-    list-style: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 1.3px;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: -2rem;
-    margin-bottom: 0rem;
-}
-
-.dropDetails img {
-    width: 150px;
-    height: 150px;
-}
-
-.dropDetails li {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1rem;
-}
-
-.dropDetails li p {
-    font-size: 0.9em;
-    font-weight: 600;
-}
