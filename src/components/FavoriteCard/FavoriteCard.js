@@ -33,3 +33,4 @@ function FavoriteCard(props) {
 }
 
 export default FavoriteCard;
+

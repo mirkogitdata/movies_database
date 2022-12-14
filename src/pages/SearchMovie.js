@@ -9,7 +9,7 @@ import FavoriteList from './FavoriteList';
 import Container from '../components/Container/Container';
 import FavoriteBtn from '../components/Button/FavoriteBtn';
 
-function SearchMovie(props) {
+function SearchMovie() {
    const [loading, setLoading] = useState(false);
    const [movie, setMovie] = useState(null);
    const [favorite, setFavorite] = useState([]);

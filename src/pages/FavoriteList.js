@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Modal } from 'antd';
 import AuthContext from '../context/auth-context';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import PropTypes from 'prop-types';
 import FavoriteCard from '../components/FavoriteCard/FavoriteCard';
 
 const reorder = (list, startIndex, endIndex) => {
@@ -95,18 +94,3 @@ function FavoriteList() {
 }
 
 export default FavoriteList;
-FavoriteList.propTypes = {
-   favorite: PropTypes.arrayOf(
-      PropTypes.shape({
-         imdbID: PropTypes.string.isRequired,
-         Title: PropTypes.string.isRequired,
-         Year: PropTypes.string.isRequired,
-         Rated: PropTypes.string.isRequired,
-         Country: PropTypes.string.isRequired,
-         Poster: PropTypes.string.isRequired,
-      })
-   ).isRequired,
-   setModalShow: PropTypes.func.isRequired,
-   setFavorite: PropTypes.func.isRequired,
-   removeFromFavoriteList: PropTypes.func.isRequired
-};
