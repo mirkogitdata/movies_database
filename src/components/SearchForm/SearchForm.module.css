@@ -17,15 +17,15 @@
     font: inherit;
     padding: 0.3rem;
     font-size: 1.2em;
-    height: 40px;
+    min-height: 40px;
     letter-spacing: 0.7px;
     border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: rgba(0, 227, 106, 0.3);
+    border: 2px solid #fff;
+    background-color: rgba(0, 227, 106, 0.8);
 }
 
 .form input::placeholder {
-    color: #00e36a;
+    color: #fff;
     font-weight: 700;
 }
 
@@ -35,7 +35,7 @@
 
 .form input:focus {
     outline: none;
-    color: #00e36a;
+    color: #fff;
     border-color: #00e36a;
     background: rgba(0, 227, 106, 0.1);
     letter-spacing: 1.8px;
@@ -51,10 +51,9 @@
     font: inherit;
     background: rgba(51, 56, 61, 0.7);
     color: rgba(255, 255, 255, 0.9);
-    height: 40px;
+    min-height: 40px;
     outline: none;
     cursor: pointer;
-    margin-bottom: 7rem;
     font-size: 1.3em;
     border: 1px solid #00e36a;
     border-radius: 6px;

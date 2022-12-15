@@ -34,6 +34,7 @@ function SearchMovie() {
                message.warning('The movie is not found, please try again');
             } else {
                const movie = {
+                  id: MovieCard,
                   imdbID: response.imdbID,
                   Title: response.Title,
                   Year: response.Year,
@@ -64,6 +65,7 @@ function SearchMovie() {
       message.success(`${title} is removed from favorite movies`);
    };
 
+
    return (
       <>
          <AuthContext.Provider value={{
@@ -85,18 +87,20 @@ function SearchMovie() {
                <FavoriteBtn />
                <FavoriteList />
                <Divider
-                  style={{ border: 'none', marginTop: '5rem' }}
+                  style={{ border: 'none', marginTop: '9rem' }}
                />
                <SearchForm />
-               {loading && <p>Loading...</p>}
+            </Container>
+            <section id="modalScroll" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'rgba(51, 56, 61, 0.2)' }}>
+               {loading && <p style={{ color: '#00e36a', fontSize: '2em' }}>Loading...</p>}
                {!loading ? (
                   movie && <MovieCard />
                ) : (
-                  <LoadingOutlined style={{ fontSize: '36px', color: 'white' }} />
+                  <LoadingOutlined style={{ fontSize: '36px', color: '#00e36a' }} />
                )}
-
-            </Container>
+            </section>
          </AuthContext.Provider>
+
       </>
 
 

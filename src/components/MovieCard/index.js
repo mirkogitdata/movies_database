@@ -10,16 +10,25 @@ function MovieCard() {
 
    const context = useContext(AuthContext);
 
+
+   const scrollTop = () => {
+      const element = document.querySelector('body');
+      if (element) {
+         element.scrollIntoView({ behavior: 'smooth' });
+      }
+   }
+
    const clickedStar = () => {
-      setClick(true)
-      context.addToFavoriteList(context.movie)
+      setClick(true);
+      context.addToFavoriteList(context.movie);
+      scrollTop();
    }
 
 
    const card = context.addToFavoriteList && (
       <Card
          hoverable
-         style={{ width: 200, border: '2px solid #00e36a' }}
+         style={{ width: 240 }}
          cover={
             context.movie.Poster !== 'N/A' && <img alt='movie' src={context.movie.Poster} />
          }

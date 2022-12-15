@@ -15,6 +15,15 @@ const SearchForm = () => {
         setInput(event.target.value);
     }
 
+    const handleSmooth = () => {
+        const element = document.getElementById('modalScroll');
+        element.style.height = '100vh';
+        element.style.padding = '4rem';
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     const submitHandler = (event) => {
         event.preventDefault();
         context.setLoading(true);
@@ -27,6 +36,7 @@ const SearchForm = () => {
                 context.setLoading(false);
             }, 1500)
         );
+        handleSmooth();
         event.target.reset();
     }
     return (
