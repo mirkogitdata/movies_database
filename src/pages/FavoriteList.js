@@ -26,7 +26,7 @@ const getListStyle = (isDraggingOver) => ({
    width: '100%',
 });
 
-function FavoriteList() {
+const FavoriteList = () => {
 
    const context = useContext(AuthContext);
 

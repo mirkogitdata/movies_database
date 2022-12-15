@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { message, Divider } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 import AuthContext from '../context/auth-context';
 import api from '../api';
 import SearchForm from '../components/SearchForm/SearchForm';
-import MovieCard from '../components/MovieCard';
 import FavoriteList from './FavoriteList';
 import Container from '../components/Container/Container';
 import FavoriteBtn from '../components/Button/FavoriteBtn';
+import DetailsMovie from './DetailsMovie';
 
-function SearchMovie() {
+const SearchMovie = () => {
    const [loading, setLoading] = useState(false);
    const [movie, setMovie] = useState(null);
    const [favorite, setFavorite] = useState([]);
@@ -34,7 +33,6 @@ function SearchMovie() {
                message.warning('The movie is not found, please try again');
             } else {
                const movie = {
-                  id: MovieCard,
                   imdbID: response.imdbID,
                   Title: response.Title,
                   Year: response.Year,
@@ -91,14 +89,7 @@ function SearchMovie() {
                />
                <SearchForm />
             </Container>
-            <section id="modalScroll" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'rgba(51, 56, 61, 0.2)' }}>
-               {loading && <p style={{ color: '#00e36a', fontSize: '2em' }}>Loading...</p>}
-               {!loading ? (
-                  movie && <MovieCard />
-               ) : (
-                  <LoadingOutlined style={{ fontSize: '36px', color: '#00e36a' }} />
-               )}
-            </section>
+            <DetailsMovie />
          </AuthContext.Provider>
 
       </>

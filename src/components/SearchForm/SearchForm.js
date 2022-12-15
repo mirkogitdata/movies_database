@@ -16,7 +16,7 @@ const SearchForm = () => {
     }
 
     const handleSmooth = () => {
-        const element = document.getElementById('modalScroll');
+        const element = document.getElementById('detailsMovie');
         element.style.height = '100vh';
         element.style.padding = '4rem';
         if (element) {
