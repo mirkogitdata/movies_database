@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth-context';
 import { Card } from 'antd';
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import classes from '../MovieCard/styles.module.css';
+import routes from '../../routes';
 
 function MovieCard() {
 
@@ -36,14 +38,17 @@ function MovieCard() {
          <ul className={classes.details}>
             <h2>{context.movie.Title}
                <span>
-                  {
-                     !click ? (<StarOutlined
-                        style={{ color: '#00e36a', fontSize: '24px' }}
-                        onClick={clickedStar}
-                     />) : (<StarFilled
-                        style={{ color: '#00e36a', fontSize: '24px' }}
-                     />)
-                  }
+                  <Link to={routes.home}>
+                     {
+                        !click ? (<StarOutlined
+                           style={{ color: '#00e36a', fontSize: '24px' }}
+                           onClick={clickedStar}
+                        />) : (<StarFilled
+                           style={{ color: '#00e36a', fontSize: '24px' }}
+                        />)
+                     }
+                  </Link>
+
 
                </span>
             </h2>

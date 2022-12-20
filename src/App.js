@@ -15,13 +15,11 @@ const FavoriteList = lazy(() => {
    return import('./pages/FavoriteList');
 });
 
-const App = (props) => {
+const App = () => {
    const [loading, setLoading] = useState(false);
    const [movie, setMovie] = useState(null);
    const [favorite, setFavorite] = useState([]);
    const [modalShow, setModalShow] = useState(false);
-
-   //const context = useContext(AuthContext);
 
    useEffect(() => {
       const data = localStorage.getItem('my-favoriteList');
