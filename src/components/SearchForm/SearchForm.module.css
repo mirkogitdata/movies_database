@@ -46,7 +46,11 @@
     color: transparent;
 }
 
-.form button {
+.form .button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 50%;
     font: inherit;
     background: rgba(51, 56, 61, 0.7);
@@ -63,12 +67,12 @@
     -o-border-radius: 6px;
 }
 
-.form button:hover,
-.form button:active {
+.form .button:hover,
+.form .button:active {
     background: linear-gradient(145deg, #00e18c, #00e36a);
 
 }
 
-.form button:focus {
+.form .button:focus {
     outline: none;
 }

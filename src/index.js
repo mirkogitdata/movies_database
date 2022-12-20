@@ -6,9 +6,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.min.css';
 ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <React.StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

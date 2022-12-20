@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import './routes';
 import AuthContext from './context/auth-context';
 import { message } from 'antd';
 import api from './api/index';
 import SearchMovie from './pages/SearchMovie';
-import DetailsMovie from './pages/DetailsMovie';
-import FavoriteList from './pages/FavoriteList';
+import routes from './routes';
 
+const DetailsMovie = lazy(() => {
+   return import('./pages/DetailsMovie');
+});
 
-const App = () => {
+const FavoriteList = lazy(() => {
+   return import('./pages/FavoriteList');
+});
+
+const App = (props) => {
    const [loading, setLoading] = useState(false);
    const [movie, setMovie] = useState(null);
    const [favorite, setFavorite] = useState([]);
    const [modalShow, setModalShow] = useState(false);
+
+   //const context = useContext(AuthContext);
 
    useEffect(() => {
       const data = localStorage.getItem('my-favoriteList');
@@ -75,16 +85,20 @@ const App = () => {
             removeFromFavoriteList: removeFromFavoriteList,
             loading: loading,
             setLoading: setLoading,
-            onFetchmovie: fetchMovie
+            onFetchmovie: fetchMovie,
          }}
       >
-         <SearchMovie />
-         <DetailsMovie />
-         <FavoriteList />
+         <Suspense fallback={<p>Loading...</p>
+         }> <Route path={routes.empty}>
+               <Redirect to={routes.home} />
+            </Route>
+            <Route path={routes.empty} component={SearchMovie} />
+            <Route path={routes.details} component={DetailsMovie} />
+            <Route path={routes.favorite} component={FavoriteList} />
+
+         </Suspense>
       </AuthContext.Provider>
    )
 }
-
-
 
 export default App;

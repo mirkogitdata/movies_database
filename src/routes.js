@@ -1,21 +1,7 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import SearchMovie from './pages/SearchMovie';
-
-
-const Index = () => (
-   <Route
-      render={({ location }) => (
-         <Switch location={location}>
-            <Route
-               path='/'
-               component={SearchMovie}
-               key='SearchMovie'
-               exact={true}
-            />
-         </Switch>
-      )}
-   />
-);
-
-export default Index;
+const routes = {
+   empty: '/',
+   home: '/search',
+   details: '/details',
+   favorite: '/favorite'
+}
+export default routes;

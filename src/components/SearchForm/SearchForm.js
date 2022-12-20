@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../../context/auth-context";
 import { SearchOutlined } from '@ant-design/icons';
-import { Divider } from 'antd';
+import { Divider, Button } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
-
+import routes from "../../routes";
+import { Link } from 'react-router-dom';
 const SearchForm = () => {
 
     const context = useContext(AuthContext);
@@ -40,22 +41,32 @@ const SearchForm = () => {
         event.target.reset();
     }
     return (
-        <form className={classes.form} onSubmit={submitHandler}>
+        <form className={classes.form}>
             <h1>Movie Database</h1>
             <SearchOutlined
                 style={{ fontSize: '2rem', color: 'white', display: 'none' }}
             />
-            <input
-                type='search'
-                placeholder='Enter movie title'
-                onChange={changeHandler}
-            />
+            <Link to={routes.details}>
+                <input
+                    type='search'
+                    placeholder='Enter movie title'
+                    onChange={changeHandler}
+                />
+            </Link>
+
             <Divider
                 style={{ border: 'none', marginTop: '1rem' }}
             />
-            <button>Search</button>
+
+            <Button
+                onClick={submitHandler}
+                className={classes.button}
+                component={Link} to={routes.details}>
+                Search
+            </Button>
             {context.loading}
         </form>
+
     );
 };
 
