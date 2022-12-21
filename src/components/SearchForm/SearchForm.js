@@ -38,7 +38,6 @@ const SearchForm = () => {
             }, 1500)
         );
         handleSmooth();
-        event.target.reset();
     }
     return (
         <form className={classes.form}>

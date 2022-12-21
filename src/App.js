@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import './routes';
 import AuthContext from './context/auth-context';
 import { message } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import api from './api/index';
 import SearchMovie from './pages/SearchMovie';
 import routes from './routes';
@@ -86,7 +87,11 @@ const App = () => {
             onFetchmovie: fetchMovie,
          }}
       >
-         <Suspense fallback={<p>Loading...</p>
+         <Suspense fallback={
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+               <p style={{ color: '#00e36a', fontSize: '1.5em' }}>Loading...</p>
+               <LoadingOutlined style={{ fontSize: '27px', color: '#00e36a' }} />
+            </div>
          }> <Route path={routes.empty}>
                <Redirect to={routes.home} />
             </Route>
