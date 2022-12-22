@@ -5,6 +5,9 @@ import { Divider } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
 import routes from "../../routes";
 import { Link } from 'react-router-dom';
+
+
+
 const SearchForm = () => {
 
     const context = useContext(AuthContext);
@@ -45,6 +48,21 @@ const SearchForm = () => {
 
     }
 
+    const ButtonLink = () => {
+        return (
+            <button
+                onClick={submitHandler}
+                className={classes.button}
+
+            >
+                <Link style={{ width: '100%', color: 'white' }} to={routes.details}>
+                    Search
+                </Link>
+
+            </button>
+        )
+
+    }
 
     return (
         <form className={classes.form} onSubmit={submitHandler}>
@@ -60,16 +78,7 @@ const SearchForm = () => {
             <Divider
                 style={{ border: 'none', marginTop: '1rem' }}
             />
-            <button
-                onClick={submitHandler}
-                className={classes.button}
-
-            >
-                <Link style={{ width: '100%' }} to={routes.details}>
-                    Search
-                </Link>
-
-            </button>
+            <ButtonLink />
             {context.loading}
         </form>
 

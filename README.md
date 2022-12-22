@@ -1,12 +1,3 @@
-### Install
-
-yarn
-
-### Start app
-
-yarn start
-
-### Reference
-
-This app gets data from http://www.omdbapi.com
-
+You can see movie_database application after deployment: <br>
+<a href="https://mirkogitdata.github.io/search">Movie Database</a> <br>
+Enjoy in searching favorite movies...
