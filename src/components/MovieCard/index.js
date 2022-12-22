@@ -12,7 +12,6 @@ function MovieCard() {
 
    const context = useContext(AuthContext);
 
-
    const scrollTop = () => {
       const element = document.querySelector('body');
       if (element) {
@@ -25,7 +24,6 @@ function MovieCard() {
       context.addToFavoriteList(context.movie);
       scrollTop();
    }
-
 
    const card = context.addToFavoriteList && (
       <Card
@@ -48,8 +46,6 @@ function MovieCard() {
                         />)
                      }
                   </Link>
-
-
                </span>
             </h2>
 

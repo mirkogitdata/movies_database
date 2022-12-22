@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../../context/auth-context";
 import { SearchOutlined } from '@ant-design/icons';
-import { Divider, Button } from 'antd';
+import { Divider } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
 import routes from "../../routes";
 import { Link } from 'react-router-dom';
@@ -31,38 +31,45 @@ const SearchForm = () => {
         if (searchInputTimeout) {
             clearTimeout(searchInputTimeout);
         }
+
         setSearchAInputTimeout(
             setTimeout(() => {
+                handleSmooth()
+            }, 0),
+            setTimeout(() => {
+
                 context.onFetchmovie(input);
                 context.setLoading(false);
-            }, 1500)
+            }, 1500),
         );
-        handleSmooth();
+
     }
+
+
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={submitHandler}>
             <h1>Movie Database</h1>
             <SearchOutlined
                 style={{ fontSize: '2rem', color: 'white', display: 'none' }}
             />
-            <Link to={routes.details}>
-                <input
-                    type='search'
-                    placeholder='Enter movie title'
-                    onChange={changeHandler}
-                />
-            </Link>
-
+            <input
+                type='search'
+                placeholder='Enter movie title'
+                onChange={changeHandler}
+            />
             <Divider
                 style={{ border: 'none', marginTop: '1rem' }}
             />
-
-            <Button
+            <button
                 onClick={submitHandler}
                 className={classes.button}
-                component={Link} to={routes.details}>
-                Search
-            </Button>
+
+            >
+                <Link style={{ width: '100%' }} to={routes.details}>
+                    Search
+                </Link>
+
+            </button>
             {context.loading}
         </form>
 
