@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../../context/auth-context";
+import SearchButton from "../Button/SearchButton";
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider } from 'antd';
 import classes from '../SearchForm/SearchForm.module.css';
-import routes from "../../routes";
-import { Link } from 'react-router-dom';
 
 
 
-const SearchForm = () => {
+
+const SearchForm = (props) => {
 
     const context = useContext(AuthContext);
 
@@ -48,21 +48,7 @@ const SearchForm = () => {
 
     }
 
-    const ButtonLink = () => {
-        return (
-            <button
-                onClick={submitHandler}
-                className={classes.button}
 
-            >
-                <Link style={{ width: '100%', color: 'white' }} to={routes.details}>
-                    Search
-                </Link>
-
-            </button>
-        )
-
-    }
 
     return (
         <form className={classes.form} onSubmit={submitHandler}>
@@ -78,7 +64,9 @@ const SearchForm = () => {
             <Divider
                 style={{ border: 'none', marginTop: '1rem' }}
             />
-            <ButtonLink />
+            <SearchButton
+                onSubmitHandler={submitHandler}
+            />
             {context.loading}
         </form>
 
