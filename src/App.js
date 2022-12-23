@@ -84,7 +84,7 @@ const App = () => {
             removeFromFavoriteList: removeFromFavoriteList,
             loading: loading,
             setLoading: setLoading,
-            onFetchmovie: fetchMovie,
+            onFetchmovie: fetchMovie
          }}
       >
          <Suspense fallback={
@@ -98,7 +98,7 @@ const App = () => {
             <Route path={routes.empty} component={SearchMovie} />
             <Route path={routes.details} component={DetailsMovie} />
             <Route path={routes.favorite} component={FavoriteList} />
-
+            <Redirect to={routes.home} />
          </Suspense>
       </AuthContext.Provider>
    )

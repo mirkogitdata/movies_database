@@ -1,29 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+
 import AuthContext from '../../context/auth-context';
 import { Card } from 'antd';
-import { StarFilled, StarOutlined } from '@ant-design/icons';
+import StarIcon from '../StarIcon/StarIcon';
 import classes from '../MovieCard/styles.module.css';
-import routes from '../../routes';
+
 
 function MovieCard() {
 
-   const [click, setClick] = useState(false);
-
    const context = useContext(AuthContext);
-
-   const scrollTop = () => {
-      const element = document.querySelector('body');
-      if (element) {
-         element.scrollIntoView({ behavior: 'smooth' });
-      }
-   }
-
-   const clickedStar = () => {
-      setClick(true);
-      context.addToFavoriteList(context.movie);
-      scrollTop();
-   }
 
    const card = context.addToFavoriteList && (
       <Card
@@ -35,18 +20,7 @@ function MovieCard() {
       >
          <ul className={classes.details}>
             <h2>{context.movie.Title}
-               <span>
-                  {
-                     !click ? (<StarOutlined
-                        style={{ color: '#00e36a', fontSize: '24px' }}
-                        onClick={clickedStar}
-                     />) : (<Link to={routes.home}>
-                        <StarFilled
-                           style={{ color: '#00e36a', fontSize: '24px' }}
-                        />
-                     </Link>)
-                  }
-               </span>
+               <StarIcon />
             </h2>
 
             <li>Year:  {context.movie.Year}</li>
