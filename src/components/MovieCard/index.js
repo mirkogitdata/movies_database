@@ -36,16 +36,16 @@ function MovieCard() {
          <ul className={classes.details}>
             <h2>{context.movie.Title}
                <span>
-                  <Link to={routes.home}>
-                     {
-                        !click ? (<StarOutlined
+                  {
+                     !click ? (<StarOutlined
+                        style={{ color: '#00e36a', fontSize: '24px' }}
+                        onClick={clickedStar}
+                     />) : (<Link to={routes.home}>
+                        <StarFilled
                            style={{ color: '#00e36a', fontSize: '24px' }}
-                           onClick={clickedStar}
-                        />) : (<StarFilled
-                           style={{ color: '#00e36a', fontSize: '24px' }}
-                        />)
-                     }
-                  </Link>
+                        />
+                     </Link>)
+                  }
                </span>
             </h2>
 
