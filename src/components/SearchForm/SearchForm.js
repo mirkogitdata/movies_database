@@ -34,21 +34,15 @@ const SearchForm = (props) => {
         if (searchInputTimeout) {
             clearTimeout(searchInputTimeout);
         }
-
         setSearchAInputTimeout(
             setTimeout(() => {
-                handleSmooth()
-            }, 0),
-            setTimeout(() => {
-
+                handleSmooth();
                 context.onFetchmovie(input);
                 context.setLoading(false);
-            }, 1500),
+            }, 300),
         );
 
     }
-
-
 
     return (
         <form className={classes.form} onSubmit={submitHandler}>
